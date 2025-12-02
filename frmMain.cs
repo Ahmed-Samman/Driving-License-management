@@ -34,5 +34,10 @@ namespace UserInterFacelayer
             Form frmMUsers = new frmMangeUser();
             frmMUsers.ShowDialog();
         }
+
+        private void msApplications_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

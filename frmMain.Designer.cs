@@ -73,7 +73,6 @@
             msDrivingLicenseServices.Name = "msDrivingLicenseServices";
             msDrivingLicenseServices.Size = new System.Drawing.Size(388, 82);
             msDrivingLicenseServices.Text = "Driving Licenses Services";
-           
             // 
             // msNewDrivingLicense
             // 
@@ -163,7 +162,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1304, 103);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-           
+            // 
             // msApplications
             // 
             this.msApplications.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -177,10 +176,11 @@
             this.msApplications.Image = global::Driving_License_management.Properties.Resources.public_document2;
             this.msApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.msApplications.Name = "msApplications";
-            this.msApplications.Size = new System.Drawing.Size(106, 99);
-            this.msApplications.Text = " ";
+            this.msApplications.Size = new System.Drawing.Size(224, 99);
+            this.msApplications.Text = " Applications";
             this.msApplications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.msApplications.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.msApplications.Click += new System.EventHandler(this.msApplications_Click);
             // 
             // msListApplications
             // 
@@ -213,7 +213,6 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(388, 82);
             this.toolStripMenuItem5.Text = "Manage Application Types";
-           
             // 
             // msPeople
             // 
