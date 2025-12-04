@@ -49,6 +49,11 @@
             this.msDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.msUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.msAccountSetting = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctsmCurrentUserInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmSignOut = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             msDrivingLicenseServices = new System.Windows.Forms.ToolStripMenuItem();
@@ -247,6 +252,12 @@
             // 
             // msAccountSetting
             // 
+            this.msAccountSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ctsmCurrentUserInfo,
+            this.toolStripSeparator4,
+            this.tsmChangePassword,
+            this.toolStripSeparator5,
+            this.tsmSignOut});
             this.msAccountSetting.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msAccountSetting.ForeColor = System.Drawing.Color.Olive;
             this.msAccountSetting.Image = global::Driving_License_management.Properties.Resources.account_settings;
@@ -254,6 +265,42 @@
             this.msAccountSetting.Name = "msAccountSetting";
             this.msAccountSetting.Size = new System.Drawing.Size(252, 99);
             this.msAccountSetting.Text = "Account Setting";
+            // 
+            // ctsmCurrentUserInfo
+            // 
+            this.ctsmCurrentUserInfo.Image = global::Driving_License_management.Properties.Resources.list__1_;
+            this.ctsmCurrentUserInfo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ctsmCurrentUserInfo.Name = "ctsmCurrentUserInfo";
+            this.ctsmCurrentUserInfo.Size = new System.Drawing.Size(319, 74);
+            this.ctsmCurrentUserInfo.Text = "Current User Info";
+            this.ctsmCurrentUserInfo.Click += new System.EventHandler(this.ctsmCurrentUserInfo_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(316, 6);
+            // 
+            // tsmChangePassword
+            // 
+            this.tsmChangePassword.Image = global::Driving_License_management.Properties.Resources.password;
+            this.tsmChangePassword.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmChangePassword.Name = "tsmChangePassword";
+            this.tsmChangePassword.Size = new System.Drawing.Size(319, 74);
+            this.tsmChangePassword.Text = "Change Password";
+            this.tsmChangePassword.Click += new System.EventHandler(this.tsmChangePassword_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(316, 6);
+            // 
+            // tsmSignOut
+            // 
+            this.tsmSignOut.Image = global::Driving_License_management.Properties.Resources.sign_out;
+            this.tsmSignOut.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsmSignOut.Name = "tsmSignOut";
+            this.tsmSignOut.Size = new System.Drawing.Size(319, 74);
+            this.tsmSignOut.Text = "Sign out";
             // 
             // label1
             // 
@@ -319,6 +366,11 @@
         private System.Windows.Forms.ToolStripMenuItem msRetakeTest;
         private System.Windows.Forms.ToolStripMenuItem msLocalLicense;
         private System.Windows.Forms.ToolStripMenuItem msInternationalLicense;
+        private System.Windows.Forms.ToolStripMenuItem ctsmCurrentUserInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsmChangePassword;
+        private System.Windows.Forms.ToolStripMenuItem tsmSignOut;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 

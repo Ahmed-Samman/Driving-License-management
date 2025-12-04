@@ -39,5 +39,17 @@ namespace UserInterFacelayer
         {
 
         }
+
+        private void tsmChangePassword_Click(object sender, EventArgs e)
+        {
+            Form frmChangePassword = new frmChangePassword();
+            frmChangePassword.ShowDialog();
+        }
+
+        private void ctsmCurrentUserInfo_Click(object sender, EventArgs e)
+        {
+            Form frmCurrentUserInfo = new frmUserInfo();
+            frmCurrentUserInfo.ShowDialog();
+        }
     }
 }
