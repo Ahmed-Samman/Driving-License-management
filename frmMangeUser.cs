@@ -19,13 +19,22 @@ namespace Driving_License_management
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            Form frmAddUser = new frmAddNewUser();
+            Form frmAddUser = new frmAddNewUser("Add New User");
+            frmAddUser.Text = "Add New User";
             frmAddUser.ShowDialog();
         }
 
-        private void frmMangeUser_Load(object sender, EventArgs e)
+        private void tsmEdit_Click(object sender, EventArgs e)
         {
+            Form frmAddUser = new frmAddNewUser("Update User");
+            frmAddUser.Text = "Update User";
+            frmAddUser.ShowDialog();
+        }
 
+        private void tsmAddNewUser_Click(object sender, EventArgs e)
+        {
+            Form frmAddUser = new frmAddNewUser("Add New User");
+            frmAddUser.ShowDialog();
         }
     }
 }

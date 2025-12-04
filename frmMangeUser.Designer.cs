@@ -199,6 +199,7 @@
             this.tsmAddNewUser.Name = "tsmAddNewUser";
             this.tsmAddNewUser.Size = new System.Drawing.Size(248, 32);
             this.tsmAddNewUser.Text = "Add New User";
+            this.tsmAddNewUser.Click += new System.EventHandler(this.tsmAddNewUser_Click);
             // 
             // tsmEdit
             // 
@@ -206,6 +207,7 @@
             this.tsmEdit.Name = "tsmEdit";
             this.tsmEdit.Size = new System.Drawing.Size(248, 32);
             this.tsmEdit.Text = "Edit";
+            this.tsmEdit.Click += new System.EventHandler(this.tsmEdit_Click);
             // 
             // tsmDelete
             // 
@@ -285,7 +287,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmMangeUser";
             this.Text = "Mange User";
-            this.Load += new System.EventHandler(this.frmMangeUser_Load);
+          
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
