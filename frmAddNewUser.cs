@@ -24,6 +24,7 @@ namespace Driving_License_management
             else
             {
                 btnSelectPerson.Enabled = false;
+                btnSelectPerson.BackColor = Color.White;
                 label1.Text = "Update User";
             }
 
