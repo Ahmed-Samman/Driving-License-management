@@ -36,5 +36,11 @@ namespace Driving_License_management
             Form frmAddUser = new frmAddNewUser("Add New User");
             frmAddUser.ShowDialog();
         }
+
+        private void tsmChangePassword_Click(object sender, EventArgs e)
+        {
+            Form frmChangePassword = new frmChangePassword();
+            frmChangePassword.ShowDialog();
+        }
     }
 }
