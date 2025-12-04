@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label lblRecords;
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,11 +40,22 @@
             this.cFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cIsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmShowDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAddNewUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmChangePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmSendEmail = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmPhoneCall = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             lblRecords = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,11 +117,12 @@
             this.cFullName,
             this.cUserName,
             this.cIsActive});
-            this.dataGridView1.Location = new System.Drawing.Point(2, 249);
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataGridView1.Location = new System.Drawing.Point(8, 239);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(959, 310);
+            this.dataGridView1.Size = new System.Drawing.Size(974, 310);
             this.dataGridView1.TabIndex = 8;
             // 
             // cUserID
@@ -146,6 +159,81 @@
             this.cIsActive.MinimumWidth = 8;
             this.cIsActive.Name = "cIsActive";
             this.cIsActive.Width = 150;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmShowDetails,
+            this.toolStripSeparator1,
+            this.tsmAddNewUser,
+            this.tsmEdit,
+            this.tsmDelete,
+            this.tsmChangePassword,
+            this.toolStripSeparator2,
+            this.tsmSendEmail,
+            this.tsmPhoneCall});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(249, 273);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(245, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(245, 6);
+            // 
+            // tsmShowDetails
+            // 
+            this.tsmShowDetails.Image = global::Driving_License_management.Properties.Resources.clipboard;
+            this.tsmShowDetails.Name = "tsmShowDetails";
+            this.tsmShowDetails.Size = new System.Drawing.Size(248, 32);
+            this.tsmShowDetails.Text = "Show Details";
+            // 
+            // tsmAddNewUser
+            // 
+            this.tsmAddNewUser.Image = global::Driving_License_management.Properties.Resources._2;
+            this.tsmAddNewUser.Name = "tsmAddNewUser";
+            this.tsmAddNewUser.Size = new System.Drawing.Size(248, 32);
+            this.tsmAddNewUser.Text = "Add New User";
+            // 
+            // tsmEdit
+            // 
+            this.tsmEdit.Image = global::Driving_License_management.Properties.Resources.edit;
+            this.tsmEdit.Name = "tsmEdit";
+            this.tsmEdit.Size = new System.Drawing.Size(248, 32);
+            this.tsmEdit.Text = "Edit";
+            // 
+            // tsmDelete
+            // 
+            this.tsmDelete.Image = global::Driving_License_management.Properties.Resources.delete_row;
+            this.tsmDelete.Name = "tsmDelete";
+            this.tsmDelete.Size = new System.Drawing.Size(248, 32);
+            this.tsmDelete.Text = "Delete";
+            // 
+            // tsmChangePassword
+            // 
+            this.tsmChangePassword.Image = global::Driving_License_management.Properties.Resources.password;
+            this.tsmChangePassword.Name = "tsmChangePassword";
+            this.tsmChangePassword.Size = new System.Drawing.Size(248, 32);
+            this.tsmChangePassword.Text = "Change Password";
+            // 
+            // tsmSendEmail
+            // 
+            this.tsmSendEmail.Image = global::Driving_License_management.Properties.Resources.email;
+            this.tsmSendEmail.Name = "tsmSendEmail";
+            this.tsmSendEmail.Size = new System.Drawing.Size(248, 32);
+            this.tsmSendEmail.Text = "Send Email";
+            // 
+            // tsmPhoneCall
+            // 
+            this.tsmPhoneCall.Image = global::Driving_License_management.Properties.Resources.phone;
+            this.tsmPhoneCall.Name = "tsmPhoneCall";
+            this.tsmPhoneCall.Size = new System.Drawing.Size(248, 32);
+            this.tsmPhoneCall.Text = "Phone Call";
             // 
             // btnAddUser
             // 
@@ -185,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 642);
+            this.ClientSize = new System.Drawing.Size(994, 642);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(lblRecords);
@@ -199,6 +287,7 @@
             this.Text = "Mange User";
             this.Load += new System.EventHandler(this.frmMangeUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,5 +309,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cFullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cUserName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cIsActive;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmShowDetails;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsmAddNewUser;
+        private System.Windows.Forms.ToolStripMenuItem tsmEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsmChangePassword;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem tsmSendEmail;
+        private System.Windows.Forms.ToolStripMenuItem tsmPhoneCall;
     }
 }
