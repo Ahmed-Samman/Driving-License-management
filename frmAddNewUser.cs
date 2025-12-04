@@ -12,9 +12,21 @@ namespace Driving_License_management
 {
     public partial class frmAddNewUser : Form
     {
-        public frmAddNewUser()
+        public frmAddNewUser(string title)
         {
             InitializeComponent();
+
+            if(title == "Add New User")
+            {
+                btnUpdatePerson.Visible = false;
+                label1.Text = "Add New User";
+            }
+            else
+            {
+                btnSelectPerson.Enabled = false;
+                label1.Text = "Update User";
+            }
+
         }
 
         private void btnSelectPerson_Click(object sender, EventArgs e)

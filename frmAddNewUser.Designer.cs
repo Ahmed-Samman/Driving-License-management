@@ -38,15 +38,16 @@
             this.tpage1PersonalInfo = new System.Windows.Forms.TabPage();
             this.ctrlPersonDetails1 = new Driving_License_management.ctrlPersonDetails();
             this.tpage2LoginInfo = new System.Windows.Forms.TabPage();
-            this.lalble1 = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
+            this.lalble1 = new System.Windows.Forms.Label();
+            this.btnUpdatePerson = new System.Windows.Forms.Button();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tabcPersonInfo.SuspendLayout();
@@ -151,6 +152,7 @@
             // 
             // tpage1PersonalInfo
             // 
+            this.tpage1PersonalInfo.Controls.Add(this.btnUpdatePerson);
             this.tpage1PersonalInfo.Controls.Add(this.ctrlPersonDetails1);
             this.tpage1PersonalInfo.Controls.Add(this.btnSelectPerson);
             this.tpage1PersonalInfo.Controls.Add(this.btnNextPage2);
@@ -189,45 +191,37 @@
             this.tpage2LoginInfo.Text = "Login Info";
             this.tpage2LoginInfo.UseVisualStyleBackColor = true;
             // 
-            // lalble1
+            // chkIsActive
             // 
-            this.lalble1.AutoSize = true;
-            this.lalble1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lalble1.Location = new System.Drawing.Point(102, 64);
-            this.lalble1.Name = "lalble1";
-            this.lalble1.Size = new System.Drawing.Size(83, 22);
-            this.lalble1.TabIndex = 0;
-            this.lalble1.Text = "UserID: ";
+            this.chkIsActive.AutoSize = true;
+            this.chkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIsActive.Location = new System.Drawing.Point(239, 308);
+            this.chkIsActive.Name = "chkIsActive";
+            this.chkIsActive.Size = new System.Drawing.Size(104, 24);
+            this.chkIsActive.TabIndex = 8;
+            this.chkIsActive.Text = "Is Active";
+            this.chkIsActive.UseVisualStyleBackColor = true;
             // 
-            // lblUserID
+            // txtConfirmPassword
             // 
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(235, 64);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(54, 22);
-            this.lblUserID.TabIndex = 1;
-            this.lblUserID.Text = "????";
+            this.txtConfirmPassword.Location = new System.Drawing.Point(239, 241);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.Size = new System.Drawing.Size(186, 26);
+            this.txtConfirmPassword.TabIndex = 7;
             // 
-            // label2
+            // txtPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(76, 124);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 22);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "UserName:";
+            this.txtPassword.Location = new System.Drawing.Point(239, 182);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(186, 26);
+            this.txtPassword.TabIndex = 6;
             // 
-            // label3
+            // txtUserName
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(82, 186);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 22);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Password:";
+            this.txtUserName.Location = new System.Drawing.Point(239, 120);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(186, 26);
+            this.txtUserName.TabIndex = 5;
             // 
             // label4
             // 
@@ -239,37 +233,56 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Confirm Password:";
             // 
-            // txtUserName
+            // label3
             // 
-            this.txtUserName.Location = new System.Drawing.Point(239, 120);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(186, 26);
-            this.txtUserName.TabIndex = 5;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(82, 186);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 22);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Password:";
             // 
-            // txtPassword
+            // label2
             // 
-            this.txtPassword.Location = new System.Drawing.Point(239, 182);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(186, 26);
-            this.txtPassword.TabIndex = 6;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(76, 124);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 22);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "UserName:";
             // 
-            // txtConfirmPassword
+            // lblUserID
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(239, 241);
-            this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(186, 26);
-            this.txtConfirmPassword.TabIndex = 7;
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserID.Location = new System.Drawing.Point(235, 64);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(54, 22);
+            this.lblUserID.TabIndex = 1;
+            this.lblUserID.Text = "????";
             // 
-            // chkIsActive
+            // lalble1
             // 
-            this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsActive.Location = new System.Drawing.Point(239, 308);
-            this.chkIsActive.Name = "chkIsActive";
-            this.chkIsActive.Size = new System.Drawing.Size(104, 24);
-            this.chkIsActive.TabIndex = 8;
-            this.chkIsActive.Text = "Is Active";
-            this.chkIsActive.UseVisualStyleBackColor = true;
+            this.lalble1.AutoSize = true;
+            this.lalble1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lalble1.Location = new System.Drawing.Point(102, 64);
+            this.lalble1.Name = "lalble1";
+            this.lalble1.Size = new System.Drawing.Size(83, 22);
+            this.lalble1.TabIndex = 0;
+            this.lalble1.Text = "UserID: ";
+            // 
+            // btnUpdatePerson
+            // 
+            this.btnUpdatePerson.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnUpdatePerson.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdatePerson.Location = new System.Drawing.Point(409, 19);
+            this.btnUpdatePerson.Name = "btnUpdatePerson";
+            this.btnUpdatePerson.Size = new System.Drawing.Size(186, 56);
+            this.btnUpdatePerson.TabIndex = 31;
+            this.btnUpdatePerson.Text = "Update Person";
+            this.btnUpdatePerson.UseVisualStyleBackColor = false;
             // 
             // frmAddNewUser
             // 
@@ -312,5 +325,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chkIsActive;
+        private System.Windows.Forms.Button btnUpdatePerson;
     }
 }
