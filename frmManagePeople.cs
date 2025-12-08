@@ -1,12 +1,6 @@
 ﻿using Driving_License_management;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DVLDBusinessLayer;
 using System.Windows.Forms;
 
 namespace UserInterFacelayer
@@ -48,7 +42,23 @@ namespace UserInterFacelayer
 
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
+            _RefreshDataGrid();
 
+
+        }
+
+        private void _RefreshDataGrid()
+        {
+            dgvManagePeople.DataSource = clsPeopleBusinessLayer.List();
+
+            // For Hide A Column
+            dgvManagePeople.Columns["NationalityCountryID"].Visible = false;
+            dgvManagePeople.Columns["ImagePath"].Visible = false;
+        }
+
+        private void dgvManagePeople_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

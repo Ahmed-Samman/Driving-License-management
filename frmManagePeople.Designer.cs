@@ -31,17 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvManagePeople = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CNationalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cThirdName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cNationality = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contmList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmShowDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -71,18 +60,6 @@
             this.dgvManagePeople.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvManagePeople.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvManagePeople.ColumnHeadersHeight = 34;
-            this.dgvManagePeople.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.CNationalNo,
-            this.cFirstName,
-            this.cSecondName,
-            this.cThirdName,
-            this.cLastName,
-            this.cGender,
-            this.cDateOfBirth,
-            this.cNationality,
-            this.cPhone,
-            this.cEmail});
             this.dgvManagePeople.ContextMenuStrip = this.contmList;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
@@ -101,84 +78,7 @@
             this.dgvManagePeople.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvManagePeople.Size = new System.Drawing.Size(1349, 276);
             this.dgvManagePeople.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Peson ID";
-            this.Column1.MinimumWidth = 8;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 111;
-            // 
-            // CNationalNo
-            // 
-            this.CNationalNo.HeaderText = "NationalNo";
-            this.CNationalNo.MinimumWidth = 8;
-            this.CNationalNo.Name = "CNationalNo";
-            this.CNationalNo.Width = 123;
-            // 
-            // cFirstName
-            // 
-            this.cFirstName.HeaderText = "First Name";
-            this.cFirstName.MinimumWidth = 8;
-            this.cFirstName.Name = "cFirstName";
-            this.cFirstName.Width = 122;
-            // 
-            // cSecondName
-            // 
-            this.cSecondName.HeaderText = "Second Name";
-            this.cSecondName.MinimumWidth = 8;
-            this.cSecondName.Name = "cSecondName";
-            this.cSecondName.Width = 146;
-            // 
-            // cThirdName
-            // 
-            this.cThirdName.HeaderText = "Third Name";
-            this.cThirdName.MinimumWidth = 8;
-            this.cThirdName.Name = "cThirdName";
-            this.cThirdName.Width = 126;
-            // 
-            // cLastName
-            // 
-            this.cLastName.HeaderText = "Last Name";
-            this.cLastName.MinimumWidth = 8;
-            this.cLastName.Name = "cLastName";
-            this.cLastName.Width = 122;
-            // 
-            // cGender
-            // 
-            this.cGender.HeaderText = "Gender";
-            this.cGender.MinimumWidth = 8;
-            this.cGender.Name = "cGender";
-            this.cGender.Width = 99;
-            // 
-            // cDateOfBirth
-            // 
-            this.cDateOfBirth.HeaderText = "Date Of birth";
-            this.cDateOfBirth.MinimumWidth = 8;
-            this.cDateOfBirth.Name = "cDateOfBirth";
-            this.cDateOfBirth.Width = 136;
-            // 
-            // cNationality
-            // 
-            this.cNationality.HeaderText = "Nationality";
-            this.cNationality.MinimumWidth = 8;
-            this.cNationality.Name = "cNationality";
-            this.cNationality.Width = 118;
-            // 
-            // cPhone
-            // 
-            this.cPhone.HeaderText = "Phone";
-            this.cPhone.MinimumWidth = 8;
-            this.cPhone.Name = "cPhone";
-            this.cPhone.Width = 91;
-            // 
-            // cEmail
-            // 
-            this.cEmail.FillWeight = 200F;
-            this.cEmail.HeaderText = "Email";
-            this.cEmail.MinimumWidth = 8;
-            this.cEmail.Name = "cEmail";
-            this.cEmail.Width = 84;
+            this.dgvManagePeople.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvManagePeople_CellContentClick);
             // 
             // contmList
             // 
@@ -365,17 +265,6 @@
         private System.Windows.Forms.Button btnAddPerson;
         private System.Windows.Forms.Label lbRecords;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CNationalNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cSecondName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cThirdName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cGender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDateOfBirth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cNationality;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cPhone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
         private System.Windows.Forms.ContextMenuStrip contmList;
         private System.Windows.Forms.ToolStripMenuItem tsmShowDetails;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
