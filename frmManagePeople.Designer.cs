@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvManagePeople = new System.Windows.Forms.DataGridView();
             this.contmList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmShowDetails = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,14 +61,14 @@
             this.dgvManagePeople.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvManagePeople.ColumnHeadersHeight = 34;
             this.dgvManagePeople.ContextMenuStrip = this.contmList;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManagePeople.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManagePeople.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvManagePeople.GridColor = System.Drawing.SystemColors.AppWorkspace;
             this.dgvManagePeople.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvManagePeople.Location = new System.Drawing.Point(1, 269);
@@ -179,6 +179,7 @@
             this.combFilterBy.Name = "combFilterBy";
             this.combFilterBy.Size = new System.Drawing.Size(200, 28);
             this.combFilterBy.TabIndex = 4;
+            this.combFilterBy.SelectedIndexChanged += new System.EventHandler(this.combFilterBy_SelectedIndexChanged);
             // 
             // txtbSearchBy
             // 
@@ -186,6 +187,8 @@
             this.txtbSearchBy.Name = "txtbSearchBy";
             this.txtbSearchBy.Size = new System.Drawing.Size(180, 26);
             this.txtbSearchBy.TabIndex = 5;
+            this.txtbSearchBy.Visible = false;
+            this.txtbSearchBy.TextChanged += new System.EventHandler(this.txtbSearchBy_TextChanged);
             // 
             // lbRecords
             // 
