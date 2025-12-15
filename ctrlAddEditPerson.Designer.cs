@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,10 +42,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblNationalNo = new System.Windows.Forms.TextBox();
+            this.txtNationalNo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.lblPhone = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -66,6 +67,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.picboxImage = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -76,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -123,28 +126,35 @@
             this.txtFirstName.Location = new System.Drawing.Point(168, 53);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(131, 26);
-            this.txtFirstName.TabIndex = 6;
+            this.txtFirstName.TabIndex = 0;
+            this.txtFirstName.Tag = "First";
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.Text_Validating);
             // 
             // txtSecondName
             // 
             this.txtSecondName.Location = new System.Drawing.Point(323, 53);
             this.txtSecondName.Name = "txtSecondName";
             this.txtSecondName.Size = new System.Drawing.Size(131, 26);
-            this.txtSecondName.TabIndex = 7;
+            this.txtSecondName.TabIndex = 1;
+            this.txtSecondName.Tag = "Second";
+            this.txtSecondName.Validating += new System.ComponentModel.CancelEventHandler(this.Text_Validating);
             // 
             // txtThirdName
             // 
             this.txtThirdName.Location = new System.Drawing.Point(478, 53);
             this.txtThirdName.Name = "txtThirdName";
             this.txtThirdName.Size = new System.Drawing.Size(131, 26);
-            this.txtThirdName.TabIndex = 8;
+            this.txtThirdName.TabIndex = 2;
+            this.txtThirdName.Tag = "Third";
             // 
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(637, 53);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(131, 26);
-            this.txtLastName.TabIndex = 9;
+            this.txtLastName.TabIndex = 3;
+            this.txtLastName.Tag = "Last";
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.Text_Validating);
             // 
             // lnkSetImage
             // 
@@ -153,10 +163,9 @@
             this.lnkSetImage.Location = new System.Drawing.Point(739, 243);
             this.lnkSetImage.Name = "lnkSetImage";
             this.lnkSetImage.Size = new System.Drawing.Size(92, 20);
-            this.lnkSetImage.TabIndex = 10;
+            this.lnkSetImage.TabIndex = 12;
             this.lnkSetImage.TabStop = true;
             this.lnkSetImage.Text = "Set Image";
-            this.lnkSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSetImage_LinkClicked);
             // 
             // label6
             // 
@@ -194,12 +203,13 @@
             this.label9.TabIndex = 14;
             this.label9.Text = "Last";
             // 
-            // lblNationalNo
+            // txtNationalNo
             // 
-            this.lblNationalNo.Location = new System.Drawing.Point(168, 88);
-            this.lblNationalNo.Name = "lblNationalNo";
-            this.lblNationalNo.Size = new System.Drawing.Size(156, 26);
-            this.lblNationalNo.TabIndex = 15;
+            this.txtNationalNo.Location = new System.Drawing.Point(168, 88);
+            this.txtNationalNo.Name = "txtNationalNo";
+            this.txtNationalNo.Size = new System.Drawing.Size(156, 26);
+            this.txtNationalNo.TabIndex = 4;
+            this.txtNationalNo.Tag = "NaionalNO";
             // 
             // label10
             // 
@@ -220,15 +230,14 @@
             this.label11.Size = new System.Drawing.Size(65, 20);
             this.label11.TabIndex = 18;
             this.label11.Text = "Phone:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // lblPhone
+            // txtPhone
             // 
-            this.lblPhone.Location = new System.Drawing.Point(572, 124);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(131, 26);
-            this.lblPhone.TabIndex = 19;
-            this.lblPhone.TextChanged += new System.EventHandler(this.lblPhone_TextChanged);
+            this.txtPhone.Location = new System.Drawing.Point(572, 124);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(131, 26);
+            this.txtPhone.TabIndex = 8;
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.Text_Validating);
             // 
             // label12
             // 
@@ -246,14 +255,16 @@
             this.comboBox1.Location = new System.Drawing.Point(572, 162);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(131, 28);
-            this.comboBox1.TabIndex = 21;
+            this.comboBox1.TabIndex = 10;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(168, 164);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(156, 26);
-            this.txtEmail.TabIndex = 22;
+            this.txtEmail.TabIndex = 9;
+            this.txtEmail.Tag = "Email";
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.Text_Validating);
             // 
             // txtAddress
             // 
@@ -261,7 +272,9 @@
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(519, 85);
-            this.txtAddress.TabIndex = 23;
+            this.txtAddress.TabIndex = 11;
+            this.txtAddress.Tag = "Address";
+            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.Text_Validating);
             // 
             // rbtnFemale
             // 
@@ -270,10 +283,11 @@
             this.rbtnFemale.Location = new System.Drawing.Point(292, 126);
             this.rbtnFemale.Name = "rbtnFemale";
             this.rbtnFemale.Size = new System.Drawing.Size(100, 26);
-            this.rbtnFemale.TabIndex = 25;
+            this.rbtnFemale.TabIndex = 7;
+            this.rbtnFemale.Tag = "1";
             this.rbtnFemale.Text = "Female";
             this.rbtnFemale.UseVisualStyleBackColor = true;
-            this.rbtnFemale.CheckedChanged += new System.EventHandler(this.rbtnFemale_CheckedChanged);
+            this.rbtnFemale.CheckedChanged += new System.EventHandler(this.Male_FemaleCheckedChanged);
             // 
             // rbtnMale
             // 
@@ -284,11 +298,12 @@
             this.rbtnMale.Location = new System.Drawing.Point(168, 125);
             this.rbtnMale.Name = "rbtnMale";
             this.rbtnMale.Size = new System.Drawing.Size(77, 26);
-            this.rbtnMale.TabIndex = 24;
+            this.rbtnMale.TabIndex = 6;
             this.rbtnMale.TabStop = true;
+            this.rbtnMale.Tag = "0";
             this.rbtnMale.Text = "Male";
             this.rbtnMale.UseVisualStyleBackColor = true;
-            this.rbtnMale.CheckedChanged += new System.EventHandler(this.rbtnMale_CheckedChanged);
+            this.rbtnMale.CheckedChanged += new System.EventHandler(this.Male_FemaleCheckedChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -304,11 +319,12 @@
             // 
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateOfBirth.Location = new System.Drawing.Point(572, 89);
+            this.dtpDateOfBirth.MaxDate = new System.DateTime(2007, 12, 13, 0, 0, 0, 0);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(131, 26);
-            this.dtpDateOfBirth.TabIndex = 37;
-            this.dtpDateOfBirth.Value = new System.DateTime(2025, 11, 30, 0, 0, 0, 0);
-            this.dtpDateOfBirth.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dtpDateOfBirth.TabIndex = 5;
+            this.dtpDateOfBirth.Value = new System.DateTime(2007, 12, 13, 0, 0, 0, 0);
+            this.dtpDateOfBirth.ValueChanged += new System.EventHandler(this.dtpDateOfBirth_ValueChanged);
             // 
             // label1
             // 
@@ -320,7 +336,6 @@
             this.label1.Size = new System.Drawing.Size(70, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Name:  ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox9
             // 
@@ -351,7 +366,6 @@
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 34;
             this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox6
             // 
@@ -420,7 +434,7 @@
             this.btnSave.Location = new System.Drawing.Point(565, 298);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(122, 54);
-            this.btnSave.TabIndex = 27;
+            this.btnSave.TabIndex = 14;
             this.btnSave.Text = "        Save";
             this.btnSave.UseVisualStyleBackColor = true;
             // 
@@ -432,10 +446,9 @@
             this.btnClose.Location = new System.Drawing.Point(416, 298);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(122, 54);
-            this.btnClose.TabIndex = 26;
+            this.btnClose.TabIndex = 13;
             this.btnClose.Text = "        Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // picboxImage
             // 
@@ -446,6 +459,10 @@
             this.picboxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picboxImage.TabIndex = 0;
             this.picboxImage.TabStop = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // ctrlAddEditPerson
             // 
@@ -470,10 +487,10 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.lblPhone);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lblNationalNo);
+            this.Controls.Add(this.txtNationalNo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -502,6 +519,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -524,10 +542,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox lblNationalNo;
+        private System.Windows.Forms.TextBox txtNationalNo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox lblPhone;
+        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox txtEmail;
@@ -547,5 +565,6 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
