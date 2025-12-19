@@ -6,7 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -59,7 +59,7 @@
             // 
             this.lblPersonID.AutoSize = true;
             this.lblPersonID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPersonID.Location = new System.Drawing.Point(186, 88);
+            this.lblPersonID.Location = new System.Drawing.Point(158, 84);
             this.lblPersonID.Name = "lblPersonID";
             this.lblPersonID.Size = new System.Drawing.Size(49, 25);
             this.lblPersonID.TabIndex = 3;
@@ -83,7 +83,6 @@
             this.Controls.Add(this.lblAddEditPerson);
             this.Name = "frmAdd_EditPersonInfo";
             this.Text = "Add/Edit Person Info";
-            this.Load += new System.EventHandler(this.frmAdd_EditPersonInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
