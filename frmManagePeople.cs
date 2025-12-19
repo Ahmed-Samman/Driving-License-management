@@ -8,10 +8,8 @@ namespace UserInterFacelayer
 {
     public partial class frmManagePeople : Form
     {
-
-        DataTable dt = clsPeopleBusinessLayer.List();
-
-
+        DataTable dt = new DataTable();
+ 
         public frmManagePeople()
         {
             InitializeComponent();
@@ -23,7 +21,7 @@ namespace UserInterFacelayer
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
             _RefreshDataGrid();
-
+            lbRecords.Text = dgvManagePeople.RowCount.ToString();
 
         }
 
@@ -32,6 +30,7 @@ namespace UserInterFacelayer
         {
             Form frmAddEditPerson = new frmAdd_EditPersonInfo("Add New Person");
             frmAddEditPerson.ShowDialog();
+            _RefreshDataGrid();
         }
         private void tsmShowDetails_Click(object sender, EventArgs e)
         {
@@ -42,6 +41,7 @@ namespace UserInterFacelayer
         {
             Form frmAddEditPerson = new frmAdd_EditPersonInfo("Add New Person");
             frmAddEditPerson.ShowDialog();
+            _RefreshDataGrid();
         }
         private void tsmEdit_Click(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace UserInterFacelayer
 
         private void _RefreshDataGrid()
         {
-
+            dt = clsPeopleBusinessLayer.List();
             dgvManagePeople.DataSource = dt;
             
             // For Hide A Column

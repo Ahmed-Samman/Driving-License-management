@@ -55,7 +55,8 @@
             // 
             // dgvManagePeople
             // 
-            this.dgvManagePeople.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvManagePeople.AllowUserToAddRows = false;
+            this.dgvManagePeople.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvManagePeople.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvManagePeople.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvManagePeople.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -76,7 +77,7 @@
             this.dgvManagePeople.RowHeadersWidth = 62;
             this.dgvManagePeople.RowTemplate.Height = 28;
             this.dgvManagePeople.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvManagePeople.Size = new System.Drawing.Size(1349, 276);
+            this.dgvManagePeople.Size = new System.Drawing.Size(1487, 276);
             this.dgvManagePeople.TabIndex = 0;
             this.dgvManagePeople.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvManagePeople_CellContentClick);
             // 
@@ -214,7 +215,7 @@
             // 
             this.btnAddPerson.BackgroundImage = global::Driving_License_management.Properties.Resources.salesman;
             this.btnAddPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddPerson.Location = new System.Drawing.Point(1178, 190);
+            this.btnAddPerson.Location = new System.Drawing.Point(1344, 201);
             this.btnAddPerson.Name = "btnAddPerson";
             this.btnAddPerson.Size = new System.Drawing.Size(94, 58);
             this.btnAddPerson.TabIndex = 8;
@@ -236,7 +237,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1363, 601);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1489, 597);
             this.Controls.Add(this.btnAddPerson);
             this.Controls.Add(this.lbRecords);
             this.Controls.Add(this.label3);
