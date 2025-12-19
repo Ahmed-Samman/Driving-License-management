@@ -17,36 +17,28 @@ namespace Driving_License_management
 {
     public partial class ctrlAddEditPerson : UserControl
     {
-         
-         clsPeopleBusinessLayer _Person = new clsPeopleBusinessLayer();
-
          public ctrlAddEditPerson()
          {
-             InitializeComponent();
-             
-            
+             InitializeComponent();        
          }
-         
-         
-         ////Declare Delegate
-         //public delegate void SendDataBackHandler(object sender, int PersonID);
-         
-         ////Declare an Event using the delegate
-         //public event SendDataBackHandler SendDataBack;
-         
-         
-        string FirstName { get; set; }
-        string SecondName { get; set; }
-        string ThirdName { get; set; }
-        string LastName { get; set; }
-        string National_NO { get; set; }
-        DateTime DateOfBirth { get; set; }
-        string Phone { get; set; }
-        byte Gendor { get; set; }
-        string Email { get; set; }
-        string Address { get; set; }
-        int CountryID { get; set; }
-        string ImagePath { get; set; }
+
+        //Declare Delegate  
+        public event EventHandler SaveClicked;
+        public event EventHandler CloseClicked;
+
+
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string ThirdName { get; set; }
+        public string LastName { get; set; }
+        public string National_NO { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Phone { get; set; }
+        public byte Gendor { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
+        public int CountryID { get; set; }
+        public string ImagePath { get; set; }
 
         private void ctrlAddEditPerson_Load(object sender, EventArgs e)
         {
@@ -56,6 +48,7 @@ namespace Driving_License_management
 
 
         }
+
 
         // ( Done )
         //1 For Checked On txtFirst, txtSecond, txtThird, txtLast, txtPhone and Address Using -> (errorProvider)
@@ -79,6 +72,7 @@ namespace Driving_License_management
             }
         }
         
+
         //2 Validation And Check On National Number
         private string ValidateNational_NO(TextBox txt, string Message)
         {
@@ -103,6 +97,7 @@ namespace Driving_License_management
             return txt.Text.ToString();
         }
 
+
         //3 just Validation For txtEmail Using (errorProvider)
         private string ValidateEmail(TextBox txt, string Message)
         {         
@@ -116,6 +111,7 @@ namespace Driving_License_management
             return txt.Text.ToString();
         }
 
+
         //4 just Validation For txtPhone Using (KeyPress Event)     
         private void DigitOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -125,11 +121,13 @@ namespace Driving_License_management
             }
         }
        
+
         //5 Add Date Of birth
         private void dtpDateOfBirth_ValueChanged(object sender, EventArgs e)
         {
             DateOfBirth = dtpDateOfBirth.Value;
         }
+
 
         //6 For Choose Gender
         private void Male_FemaleCheckedChanged(object sender, EventArgs e)
@@ -145,6 +143,7 @@ namespace Driving_License_management
                 picboxImage.Image = Resources.person_woman;
             } 
         }
+
 
         // Send object sender (TextBox) to Required TextBox 
         private void TextCheck(TextBox txt)
@@ -187,6 +186,7 @@ namespace Driving_License_management
             TextCheck((TextBox)sender);
         }
 
+
         // Fill Countries In ComboBox
         private void _FillCombo_Countries()
         {
@@ -202,36 +202,15 @@ namespace Driving_License_management
             if(combCountries.SelectedValue != null)
                 CountryID = (int)combCountries.SelectedValue;
         }
-      
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            _Person.FirstName = FirstName;
-            _Person.SecondName = SecondName;
-            _Person.ThirdName = ThirdName;
-            _Person.LastName = LastName;
-            _Person.NationalNO = National_NO;
-            _Person.DateOfBirth = DateOfBirth;
-            _Person.Phone = Phone;
-            _Person.Gender = Gendor;
-            _Person.Email = Email;
-            _Person.Address = Address;
-            _Person.NationalityCountryID = CountryID;
-            _Person.ImagePath = ImagePath;
-
-            if (_Person.Save())
-            {
-                MessageBox.Show("Data Saved Succesfuly!", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Data Saved Faild!");
-            }
-        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Form parentForm = this.FindForm();
-            parentForm.Close();
+            CloseClicked?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }
