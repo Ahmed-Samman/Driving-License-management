@@ -7,9 +7,8 @@ namespace DVLDDataAccessLayer
 {
     public class clsPeopleDataAccess
     {
-
-       
-       static public DataTable GetAllTable()
+     
+        static public DataTable GetAllTable()
        {
             string query = "select * from People";
             SqlConnection connection = new SqlConnection(clsConectionWithDataBase.ConectionWithDataBase);
@@ -32,6 +31,7 @@ namespace DVLDDataAccessLayer
             catch(Exception ex)
             {
                 // Code;
+                ex.Message.ToString();
             }
             finally
             {
@@ -39,9 +39,9 @@ namespace DVLDDataAccessLayer
             }
             return dt;
        }
-        
-       static public int AddNewPerson(int NationalNO, string FirstName, string SecondName, string ThirdName, string LastName, 
-       DateTime DateOfBirth, byte Gendor, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
+         
+        static public int AddNewPerson(string NationalNO, string FirstName, string SecondName, string ThirdName, string LastName, 
+        DateTime DateOfBirth, byte Gendor, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
        {
             int PersonID = -1;
 
@@ -54,16 +54,41 @@ namespace DVLDDataAccessLayer
 
             command.Parameters.AddWithValue("@NationalNo", NationalNO);
             command.Parameters.AddWithValue("@FirstName", FirstName);
-            command.Parameters.AddWithValue("@SecondName", SecondName);
-            command.Parameters.AddWithValue("@ThirdName", ThirdName);
+            command.Parameters.AddWithValue("@SecondName", SecondName);  
+
+            if(ThirdName != null)
+            {
+                command.Parameters.AddWithValue("@ThirdName", ThirdName);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@ThirdName", System.DBNull.Value);
+            }
             command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             command.Parameters.AddWithValue("@Gendor", Gendor);
             command.Parameters.AddWithValue("@Address", Address);
             command.Parameters.AddWithValue("@Phone", Phone);
-            command.Parameters.AddWithValue("@Email", Email);
-            command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);
-            command.Parameters.AddWithValue("@ImagePath", ImagePath);
+
+            if (Email != null)
+            {
+                command.Parameters.AddWithValue("@Email", Email);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@Email", System.DBNull.Value);
+            }
+
+            command.Parameters.AddWithValue("@NationalityCountryID", NationalityCountryID);            
+           
+            if (ImagePath != null)
+            {
+                command.Parameters.AddWithValue("@ImagePath", ImagePath);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@ImagePath", System.DBNull.Value);
+            }
 
             try
             {
@@ -79,7 +104,8 @@ namespace DVLDDataAccessLayer
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"Error: {ex}");
+                ex.Message.ToString();
+                return PersonID;
             }
             finally
             {
@@ -88,6 +114,42 @@ namespace DVLDDataAccessLayer
             return PersonID;
        }
 
+        static public bool IsNationalNO_Exist(string National_NO)
+        {
+            bool isfound = false;
+
+            string query = "SELECT NationalNo FROM People WHERE NationalNo = @NationalNo";
+
+            SqlConnection connection = new SqlConnection(clsConectionWithDataBase.ConectionWithDataBase);
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@NationalNo", National_NO);
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null)
+                {
+                    isfound = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // code
+                return isfound;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return isfound;
+
+
+        }
 
     }
 }
