@@ -228,5 +228,10 @@ namespace Driving_License_management
             }
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Form parentForm = this.FindForm();
+            parentForm.Close();
+        }
     }
 }
