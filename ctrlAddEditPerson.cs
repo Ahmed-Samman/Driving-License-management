@@ -8,7 +8,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Resources;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -82,6 +82,15 @@ namespace Driving_License_management
                 txt.Focus();
                 errorProvider1.SetError(txt, Message);
                 return null;
+            }
+
+            if (!Regex.IsMatch(txt.Text, @"^[nN]\d+$"))
+            {
+
+                txt.Focus();
+                errorProvider1.SetError(txt, "Error! Enter (n) Or (N) And Any Number");
+                return null;
+
             }
 
             // Check is National Number Used
@@ -203,13 +212,33 @@ namespace Driving_License_management
                 CountryID = (int)combCountries.SelectedValue;
         }
 
+
+        // Check Is All TextBoxes Are Full
+        private bool IsAllInfoCompleted()
+        {
+            if (string.IsNullOrEmpty(txtFirstName.Text)) return false;
+            if (string.IsNullOrEmpty(txtSecondName.Text)) return false;
+            if (string.IsNullOrEmpty(txtLastName.Text)) return false;
+            if (string.IsNullOrEmpty(txtNationalNo.Text)) return false;
+            if (string.IsNullOrEmpty(txtPhone.Text)) return false;
+            if (string.IsNullOrEmpty(txtAddress.Text)) return false;
+            
+            return true;
+        }
+
+
+        // Save And Close Button Using Delegate
         private void btnClose_Click(object sender, EventArgs e)
         {
             CloseClicked?.Invoke(this, EventArgs.Empty);
         }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if(!IsAllInfoCompleted())
+            {
+                MessageBox.Show("You Must Enter All Requirements Of Information!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }    
             SaveClicked?.Invoke(this, EventArgs.Empty);
         }
     }
