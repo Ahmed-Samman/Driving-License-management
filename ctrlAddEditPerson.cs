@@ -11,6 +11,7 @@ using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Driving_License_management
@@ -222,8 +223,68 @@ namespace Driving_License_management
             if (string.IsNullOrEmpty(txtNationalNo.Text)) return false;
             if (string.IsNullOrEmpty(txtPhone.Text)) return false;
             if (string.IsNullOrEmpty(txtAddress.Text)) return false;
-            
+            if (!string.IsNullOrEmpty(ImagePath)) SaveInPeopleImagesFolder();
+
             return true;
+        }
+
+
+        // Add Image
+        private void lnkSetImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {    
+            openFileDialog1.Filter = openFileDialog1.Filter = "Image Files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp|All files (*.*)|*.*"; ;
+            openFileDialog1.Title = "Select Image";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ImagePath = openFileDialog1.FileName;
+                picboxImage.ImageLocation = ImagePath;
+            }
+            lnkRemove.Visible = true;
+        }
+        private bool SaveInPeopleImagesFolder()
+        {
+            // Add The Image In New Folder with New Path Using guid To Make the Image Unique
+
+            if (!string.IsNullOrEmpty(ImagePath))
+            {
+                //1 This Is The Path From OpenFileDialog
+                string SourcePath = ImagePath;
+
+                //2 This is the Path Of folder To save in it.
+                string PeopleImages = @"D:\C#\19 Full Real Project\People Images";
+
+                //3 To get an extension like ( .jpg )
+                string extension = Path.GetExtension(SourcePath);
+
+                //4 New Image name Using Guid
+                string newImageName = Guid.NewGuid().ToString() + extension;
+
+                //5 Final destinations
+                string destinationPath = Path.Combine(PeopleImages, newImageName);
+
+                //6 Image Copy
+                File.Copy(SourcePath, destinationPath, true);
+
+                //7 To Database
+                ImagePath = destinationPath;
+                return true;
+            }
+            return false;
+        }
+
+
+        // Remove Image
+        private void lnkRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if(rbtnMale.Checked)
+            {
+                picboxImage.Image = Resources.person_man;
+            }
+            else
+            {
+                picboxImage.Image = Resources.person_woman;
+            }           
         }
 
 
@@ -241,5 +302,9 @@ namespace Driving_License_management
             }    
             SaveClicked?.Invoke(this, EventArgs.Empty);
         }
+
+
+    
+
     }
 }

@@ -68,6 +68,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.picboxImage = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lnkRemove = new System.Windows.Forms.LinkLabel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -165,12 +167,13 @@
             // 
             this.lnkSetImage.AutoSize = true;
             this.lnkSetImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkSetImage.Location = new System.Drawing.Point(739, 243);
+            this.lnkSetImage.Location = new System.Drawing.Point(721, 240);
             this.lnkSetImage.Name = "lnkSetImage";
             this.lnkSetImage.Size = new System.Drawing.Size(92, 20);
             this.lnkSetImage.TabIndex = 12;
             this.lnkSetImage.TabStop = true;
             this.lnkSetImage.Text = "Set Image";
+            this.lnkSetImage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSetImage_LinkClicked);
             // 
             // label6
             // 
@@ -476,10 +479,28 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // lnkRemove
+            // 
+            this.lnkRemove.AutoSize = true;
+            this.lnkRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkRemove.Location = new System.Drawing.Point(730, 281);
+            this.lnkRemove.Name = "lnkRemove";
+            this.lnkRemove.Size = new System.Drawing.Size(74, 20);
+            this.lnkRemove.TabIndex = 39;
+            this.lnkRemove.TabStop = true;
+            this.lnkRemove.Text = "Remove";
+            this.lnkRemove.Visible = false;
+            this.lnkRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRemove_LinkClicked);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // ctrlAddEditPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lnkRemove);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.pictureBox8);
@@ -578,5 +599,7 @@
         private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.LinkLabel lnkRemove;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
