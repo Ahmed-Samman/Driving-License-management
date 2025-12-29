@@ -79,6 +79,12 @@ namespace DVLDBusinessLayer
              return clsPeopleDataAccess.IsNationalNO_Exist(National_NO);
         }
 
+        static public bool IsDeleted(int PersonID)
+        {
+            return clsPeopleDataAccess.DeletePerson(PersonID);
+        }
+
+
         static public DataTable GetAllCountries()
         {
             return clsCountryDataAccess.GetAllCountries_FromDatabase();
