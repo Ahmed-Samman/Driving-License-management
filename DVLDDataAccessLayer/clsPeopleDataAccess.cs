@@ -10,7 +10,15 @@ namespace DVLDDataAccessLayer
      
         static public DataTable GetAllTable()
        {
-            string query = "select * from People";
+            string query = @"SELECT People.PersonID, People.NationalNo, People.FirstName, People.SecondName, People.ThirdName, People.LastName, 
+                            CASE
+                            WHEN People.Gendor = '0' THEN 'Male'
+                            Else 'Female'
+                            END AS Gender,
+                            People.DateOfBirth, Countries.CountryName, People.Phone, People.Email
+                            FROM   People INNER JOIN Countries 
+                            ON People.NationalityCountryID = Countries.CountryID;";
+
             SqlConnection connection = new SqlConnection(clsConectionWithDataBase.ConectionWithDataBase);
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -139,7 +147,7 @@ namespace DVLDDataAccessLayer
             }
             catch (Exception ex)
             {
-                // code
+                ex.Message.ToString();
                 return isfound;
             }
             finally
@@ -151,5 +159,50 @@ namespace DVLDDataAccessLayer
 
         }
 
+        static public bool DeletePerson(int PersonID)
+        {
+            bool IsNotReferences = false;
+            string query = @"IF EXISTS (SELECT 1 FROM Users WHERE Users.PersonID = @PersonID)
+                             OR EXISTS (SELECT 1 FROM Applications WHERE Applications.ApplicantPersonID = @PersonID)
+                             OR EXISTS (SELECT 1 FROM Drivers WHERE Drivers.PersonID = @PersonID)
+                             BEGIN 
+                                 SELECT 1
+                             END
+                             
+                             ELSE
+                             BEGIN 
+                             	DELETE FROM People WHERE People.PersonID = @PersonID
+                             END;
+                             ;";
+
+            SqlConnection connection = new SqlConnection(clsConectionWithDataBase.ConectionWithDataBase);
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            try
+            {
+                connection.Open();
+
+                int roweffected = command.ExecuteNonQuery();
+
+                if(roweffected > 0)
+                {
+                    IsNotReferences = true;
+                }
+               
+            }
+            catch(SqlException ex)
+            {
+                ex.Message.ToString();
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return IsNotReferences;
+        }
+
     }
 }
+;
