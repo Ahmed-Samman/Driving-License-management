@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvManagePeople = new System.Windows.Forms.DataGridView();
             this.contmList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmShowDetails = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,14 +62,14 @@
             this.dgvManagePeople.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvManagePeople.ColumnHeadersHeight = 34;
             this.dgvManagePeople.ContextMenuStrip = this.contmList;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvManagePeople.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvManagePeople.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvManagePeople.GridColor = System.Drawing.SystemColors.AppWorkspace;
             this.dgvManagePeople.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvManagePeople.Location = new System.Drawing.Point(1, 269);
@@ -79,7 +79,7 @@
             this.dgvManagePeople.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvManagePeople.Size = new System.Drawing.Size(1487, 276);
             this.dgvManagePeople.TabIndex = 0;
-            this.dgvManagePeople.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvManagePeople_CellContentClick);
+            this.dgvManagePeople.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvManagePeople_CellMouseDown);
             // 
             // contmList
             // 
@@ -132,6 +132,7 @@
             this.tsmDelete.Name = "tsmDelete";
             this.tsmDelete.Size = new System.Drawing.Size(224, 32);
             this.tsmDelete.Text = "Delete";
+            this.tsmDelete.Click += new System.EventHandler(this.tsmDelete_Click);
             // 
             // toolStripSeparator2
             // 

@@ -25,47 +25,22 @@ namespace UserInterFacelayer
 
         }
 
+        private void _RefreshDataGrid()
+        {
+            dt = clsPeopleBusinessLayer.List();
+            dgvManagePeople.DataSource = dt;
+        }
 
+        // Add New Person (Button)
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
             Form frmAddEditPerson = new frmAdd_EditPersonInfo("Add New Person");
             frmAddEditPerson.ShowDialog();
             _RefreshDataGrid();
         }
-        private void tsmShowDetails_Click(object sender, EventArgs e)
-        {
-            Form frmDetailP = new frmPersonDetails();
-            frmDetailP.ShowDialog();
-        }
-        private void tsmAddNewPerson_Click(object sender, EventArgs e)
-        {
-            Form frmAddEditPerson = new frmAdd_EditPersonInfo("Add New Person");
-            frmAddEditPerson.ShowDialog();
-            _RefreshDataGrid();
-        }
-        private void tsmEdit_Click(object sender, EventArgs e)
-        {
-            Form frmAddEditPerson = new frmAdd_EditPersonInfo("     Update Person");      
-            frmAddEditPerson.ShowDialog();
-        }
-
-      
-
-        private void _RefreshDataGrid()
-        {
-            dt = clsPeopleBusinessLayer.List();
-            dgvManagePeople.DataSource = dt;
-            
-            // For Hide A Column
-            dgvManagePeople.Columns["NationalityCountryID"].Visible = false;
-            dgvManagePeople.Columns["ImagePath"].Visible = false;
-        }
-
-        private void dgvManagePeople_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
+        
+        
+        // Search About Person By Filter
         private void _AddFilterBy()
         {
             combFilterBy.Items.Add("None");
@@ -84,19 +59,22 @@ namespace UserInterFacelayer
         }
 
 
+        // Choice Witch Column To Search By it
         private void combFilterBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(combFilterBy.SelectedIndex != 0)
-            {     
-                txtbSearchBy.Visible = true;               
+            if (combFilterBy.SelectedIndex != 0)
+            {
+                txtbSearchBy.Visible = true;
             }
             else
-            {    
+            {
                 txtbSearchBy.Visible = false;
                 dgvManagePeople.DataSource = dt;
             }
         }
 
+
+        // To Search By People Column Of Info
         private void txtbSearchBy_TextChanged(object sender, EventArgs e)
         {
 
@@ -112,7 +90,73 @@ namespace UserInterFacelayer
             {
                 dv.RowFilter = $"{combFilterBy.SelectedItem} like '{txtbSearchBy.Text}%'";
             }
-            dgvManagePeople.DataSource = dv;  
+            dgvManagePeople.DataSource = dv;
         }
+
+
+        // ---------------------- ContextMenuStrip ------------------//
+
+        private void dgvManagePeople_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                dgvManagePeople.ClearSelection();
+                dgvManagePeople.Rows[e.RowIndex].Selected = true;
+                dgvManagePeople.CurrentCell = dgvManagePeople.Rows[e.RowIndex].Cells[0];
+            }
+        }
+
+
+        //1- Show Person Info
+        private void tsmShowDetails_Click(object sender, EventArgs e)
+        {
+            Form frmDetailPerson = new frmPersonDetails();
+            frmDetailPerson.ShowDialog();
+        }
+
+
+        //2- Add new Person
+        private void tsmAddNewPerson_Click(object sender, EventArgs e)
+        {
+            Form frmAddEditPerson = new frmAdd_EditPersonInfo("Add New Person");
+            frmAddEditPerson.ShowDialog();
+            _RefreshDataGrid();
+        }
+
+
+        //3- Update Person Info
+        private void tsmEdit_Click(object sender, EventArgs e)
+        {
+            Form frmAddEditPerson = new frmAdd_EditPersonInfo("     Update Person");      
+            frmAddEditPerson.ShowDialog();
+        }
+
+
+        //4- Delete Person 
+        private void tsmDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvManagePeople.SelectedRows.Count == 0)
+                return;
+
+            int PersonID = Convert.ToInt32(dgvManagePeople.SelectedRows[0].Cells["PersonID"].Value);
+
+            if (MessageBox.Show("Do You Want To Delete This Person?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                bool CanDelete = clsPeopleBusinessLayer.IsDeleted(PersonID);
+
+                if (CanDelete)
+                {
+                    MessageBox.Show("You Deleted Succesfuly", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _RefreshDataGrid();
+                }
+                else
+                {
+                    MessageBox.Show("You Cannot Delete This Person!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }          
+        }
+
+       
+      
     }
 }
