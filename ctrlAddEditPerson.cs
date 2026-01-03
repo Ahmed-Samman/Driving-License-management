@@ -40,14 +40,48 @@ namespace Driving_License_management
         public string Address { get; set; }
         public int CountryID { get; set; }
         public string ImagePath { get; set; }
+        public string OldImagePath { get; set; }
+
+        // If frmAdd-EditPerson On EditMode
+        public bool NationalNum_ReadOnly 
+        {
+            get
+            {
+               return txtNationalNo.ReadOnly;
+            }
+
+            set
+            {
+                txtNationalNo.ReadOnly = value;
+            }
+        }
+
+
+
+        // Fill All Controls In UserControl
+        public void FillUserControl()
+        {
+            txtFirstName.Text = FirstName;
+            txtSecondName.Text = SecondName;
+            txtThirdName.Text = ThirdName;
+            txtLastName.Text = LastName;
+            txtNationalNo.Text = National_NO;
+            dtpDateOfBirth.Value = DateOfBirth;
+            txtPhone.Text = Phone;
+            if (Gendor == 0)
+                rbtnMale.Checked = true;
+            else
+                rbtnFemale.Checked = true;
+            txtEmail.Text = Email;
+            txtAddress.Text = Address;
+            combCountries.SelectedValue = CountryID;
+            picboxImage.ImageLocation = OldImagePath;
+        }
 
         private void ctrlAddEditPerson_Load(object sender, EventArgs e)
-        {
-            _FillCombo_Countries();
-            DateOfBirth = dtpDateOfBirth.Value;
-            CountryID = (int)combCountries.SelectedValue;
-
-
+        {       
+             DateOfBirth = dtpDateOfBirth.Value;
+             CountryID = (int)combCountries.SelectedValue;    
         }
 
 
@@ -77,7 +111,13 @@ namespace Driving_License_management
         //2 Validation And Check On National Number
         private string ValidateNational_NO(TextBox txt, string Message)
         {
-               
+
+            if (txtNationalNo.ReadOnly)
+            {
+                return txt.Text.ToString();
+            }
+
+
             if (string.IsNullOrWhiteSpace(txt.Text))
             {
                 txt.Focus();
@@ -198,7 +238,7 @@ namespace Driving_License_management
 
 
         // Fill Countries In ComboBox
-        private void _FillCombo_Countries()
+        public void FillCombo_Countries()
         {
             DataTable dtCountries = clsPeopleBusinessLayer.GetAllCountries();
 
@@ -214,7 +254,7 @@ namespace Driving_License_management
         }
 
 
-        // Check Is All TextBoxes Are Full
+        // Check Is All TextBoxes Are Full?
         private bool IsAllInfoCompleted()
         {
             if (string.IsNullOrEmpty(txtFirstName.Text)) return false;
@@ -248,26 +288,35 @@ namespace Driving_License_management
 
             if (!string.IsNullOrEmpty(ImagePath))
             {
-                //1 This Is The Path From OpenFileDialog
-                string SourcePath = ImagePath;
+                if (OldImagePath != ImagePath)
+                {
+                    if(File.Exists(OldImagePath))
+                    {
+                        File.Delete(OldImagePath);
+                    }
 
-                //2 This is the Path Of folder To save in it.
-                string PeopleImages = @"D:\C#\19 Full Real Project\People Images";
+                    //1 This Is The Path From OpenFileDialog
+                    string SourcePath = ImagePath;
 
-                //3 To get an extension like ( .jpg )
-                string extension = Path.GetExtension(SourcePath);
+                    //2 This is the Path Of folder To save in it.
+                    string PeopleImages = @"D:\C#\19 Full Real Project\People Images";
 
-                //4 New Image name Using Guid
-                string newImageName = Guid.NewGuid().ToString() + extension;
+                    //3 To get an extension like ( .jpg )
+                    string extension = Path.GetExtension(SourcePath);
 
-                //5 Final destinations
-                string destinationPath = Path.Combine(PeopleImages, newImageName);
+                    //4 New Image name Using Guid
+                    string newImageName = Guid.NewGuid().ToString() + extension;
 
-                //6 Image Copy
-                File.Copy(SourcePath, destinationPath, true);
+                    //5 Final destinations
+                    string destinationPath = Path.Combine(PeopleImages, newImageName);
 
-                //7 To Database
-                ImagePath = destinationPath;
+                    //6 Image Copy
+                    File.Copy(SourcePath, destinationPath, true);
+
+                    //7 To Database
+                    ImagePath = destinationPath;
+                    return true;
+                }
                 return true;
             }
             return false;

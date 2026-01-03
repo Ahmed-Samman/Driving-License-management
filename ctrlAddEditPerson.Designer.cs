@@ -267,6 +267,7 @@
             this.combCountries.Name = "combCountries";
             this.combCountries.Size = new System.Drawing.Size(131, 28);
             this.combCountries.TabIndex = 10;
+           
             this.combCountries.SelectionChangeCommitted += new System.EventHandler(this.combCountries_SelectionChangeCommitted);
             // 
             // txtEmail
