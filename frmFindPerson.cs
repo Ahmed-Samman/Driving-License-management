@@ -19,7 +19,7 @@ namespace Driving_License_management
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
-            Form frmNewAddPerson = new frmAdd_EditPersonInfo("Add New Person");
+            Form frmNewAddPerson = new frmAdd_EditPersonInfo(-1);
             frmNewAddPerson.ShowDialog();
         }
 
