@@ -15,7 +15,6 @@ namespace DVLDBusinessLayer
 
         public int PersonID { get; set; }
         public string NationalNO { get; set; }
-        public int NationalityCountryID { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string ThirdName { get; set; }
@@ -25,7 +24,9 @@ namespace DVLDBusinessLayer
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public int NationalityCountryID { get; set; }
         public string ImagePath { get; set; }
+
 
         public clsPeopleBusinessLayer()
         {
@@ -44,12 +45,11 @@ namespace DVLDBusinessLayer
             Mode = enMode.AddMode;
         }
 
-        clsPeopleBusinessLayer(int PersonID, string NationalNO, int CountryID, string FirstName, string SecondName,
-            string ThirdName, string LastName, DateTime DateOfBirth, byte Gender, string Address, string Phone, string Email)
+        clsPeopleBusinessLayer(int PersonID, string NationalNO, string FirstName, string SecondName,
+            string ThirdName, string LastName, DateTime DateOfBirth, byte Gender, string Address, string Phone, string Email, int CountryID, string ImagePath)
         {
             this.PersonID = PersonID;
             this.NationalNO = NationalNO;
-            this.NationalityCountryID = CountryID;
             this.FirstName = FirstName;
             this.SecondName = SecondName;
             this.ThirdName = ThirdName;
@@ -59,6 +59,10 @@ namespace DVLDBusinessLayer
             this.Address = Address;
             this.Phone = Phone;
             this.Email = Email;
+            this.NationalityCountryID = CountryID;
+            this.ImagePath = ImagePath;
+
+            Mode = enMode.UpdateMode;
         }
 
 
@@ -74,6 +78,13 @@ namespace DVLDBusinessLayer
             return (this.PersonID != -1);
         }
 
+        private bool _UpdatePerson()
+        {
+           return clsPeopleDataAccess.UpdatePerson(PersonID, NationalNO, FirstName, SecondName, ThirdName, LastName,
+                DateOfBirth, Gender, Address, Phone, Email, NationalityCountryID, ImagePath);
+
+        }
+
         static public bool Search_NationalNO(string National_NO)
         {
              return clsPeopleDataAccess.IsNationalNO_Exist(National_NO);
@@ -84,12 +95,35 @@ namespace DVLDBusinessLayer
             return clsPeopleDataAccess.DeletePerson(PersonID);
         }
 
+        static public clsPeopleBusinessLayer FindPersonInfoByID(int PersonID)
+        {
+            string NationalNO = string.Empty, FirstName = string.Empty, 
+                SecondName = string.Empty, ThirdName = string.Empty, 
+                LastName = string.Empty, Address = string.Empty, Phone = string.Empty, 
+                Email = string.Empty, ImagePath = string.Empty;
+            int CountryID = -1;
+            byte Gender = 0;
+            DateTime DateOfBirth = DateTime.Now;
+           
+            if(clsPeopleDataAccess.FindPersonByID(PersonID, ref NationalNO, ref FirstName, ref SecondName, ref ThirdName, ref LastName, 
+                ref DateOfBirth, ref Gender, ref Address, ref Phone, ref Email, ref CountryID, ref ImagePath))
+            {
+                return new clsPeopleBusinessLayer(PersonID, NationalNO, FirstName, SecondName,
+             ThirdName, LastName, DateOfBirth, Gender, Address, Phone, Email, CountryID, ImagePath);
+                
+            }
+            else
+            {
+                return null;
+            }  
+        }
 
         static public DataTable GetAllCountries()
         {
             return clsCountryDataAccess.GetAllCountries_FromDatabase();
         }
        
+
         public bool Save()
         {
             switch(Mode)
@@ -101,11 +135,15 @@ namespace DVLDBusinessLayer
                         return true;
                     }
                     break;
-                    
-                //case enMode.UpdateMode:
-                //    {
 
-                //    }           
+                    case enMode.UpdateMode:
+                    if (_UpdatePerson())
+                    {
+                        Mode = enMode.AddMode;
+                        return true;
+                    }
+                    break;
+                              
             }
 
             return false;
