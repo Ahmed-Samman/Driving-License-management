@@ -67,10 +67,23 @@
             // 
             // ctrlAddEditPerson1
             // 
+            this.ctrlAddEditPerson1.Address = null;
+            this.ctrlAddEditPerson1.CountryID = 51;
+            this.ctrlAddEditPerson1.DateOfBirth = new System.DateTime(2007, 12, 13, 0, 0, 0, 0);
+            this.ctrlAddEditPerson1.Email = null;
+            this.ctrlAddEditPerson1.FirstName = null;
+            this.ctrlAddEditPerson1.Gendor = ((byte)(0));
+            this.ctrlAddEditPerson1.ImagePath = null;
+            this.ctrlAddEditPerson1.LastName = null;
             this.ctrlAddEditPerson1.Location = new System.Drawing.Point(6, 117);
             this.ctrlAddEditPerson1.Name = "ctrlAddEditPerson1";
+            this.ctrlAddEditPerson1.National_NO = null;
+            this.ctrlAddEditPerson1.Phone = null;
+            this.ctrlAddEditPerson1.SecondName = null;
             this.ctrlAddEditPerson1.Size = new System.Drawing.Size(852, 366);
             this.ctrlAddEditPerson1.TabIndex = 4;
+            this.ctrlAddEditPerson1.ThirdName = null;
+           
             // 
             // frmAdd_EditPersonInfo
             // 
@@ -83,6 +96,7 @@
             this.Controls.Add(this.lblAddEditPerson);
             this.Name = "frmAdd_EditPersonInfo";
             this.Text = "Add/Edit Person Info";
+           
             this.ResumeLayout(false);
             this.PerformLayout();
 
