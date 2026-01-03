@@ -34,7 +34,7 @@ namespace UserInterFacelayer
         // Add New Person (Button)
         private void btnAddPerson_Click(object sender, EventArgs e)
         {
-            Form frmAddEditPerson = new frmAdd_EditPersonInfo("Add New Person");
+            Form frmAddEditPerson = new frmAdd_EditPersonInfo(-1);
             frmAddEditPerson.ShowDialog();
             _RefreshDataGrid();
         }
@@ -118,7 +118,7 @@ namespace UserInterFacelayer
         //2- Add new Person
         private void tsmAddNewPerson_Click(object sender, EventArgs e)
         {
-            Form frmAddEditPerson = new frmAdd_EditPersonInfo("Add New Person");
+            Form frmAddEditPerson = new frmAdd_EditPersonInfo(-1);
             frmAddEditPerson.ShowDialog();
             _RefreshDataGrid();
         }
@@ -127,8 +127,14 @@ namespace UserInterFacelayer
         //3- Update Person Info
         private void tsmEdit_Click(object sender, EventArgs e)
         {
-            Form frmAddEditPerson = new frmAdd_EditPersonInfo("     Update Person");      
+            if (dgvManagePeople.SelectedRows.Count == 0)
+                return;
+
+            int PersonID = Convert.ToInt32(dgvManagePeople.SelectedRows[0].Cells["PersonID"].Value);
+
+            Form frmAddEditPerson = new frmAdd_EditPersonInfo(PersonID);      
             frmAddEditPerson.ShowDialog();
+            _RefreshDataGrid();
         }
 
 
@@ -140,7 +146,7 @@ namespace UserInterFacelayer
 
             int PersonID = Convert.ToInt32(dgvManagePeople.SelectedRows[0].Cells["PersonID"].Value);
 
-            if (MessageBox.Show("Do You Want To Delete This Person?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show($"Do You Want To Delete This Person [{PersonID}]?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 bool CanDelete = clsPeopleBusinessLayer.IsDeleted(PersonID);
 
@@ -151,7 +157,7 @@ namespace UserInterFacelayer
                 }
                 else
                 {
-                    MessageBox.Show("You Cannot Delete This Person!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("You Cannot Delete This Person....!", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }          
         }
